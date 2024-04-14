@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+</head>
+<body>
+
+    <canvas id="gameCanvas" width="300" height="300"></canvas>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</body>    
+    <script>
+
+        const game_canvas = document.getElementById('gameCanvas');
+        const game_cntx = game_canvas.getContext('2d');
+        
+        game_cntx.fillStyle = 'white';
+        game_cntx.fillRect(0, 0, game_canvas.width, game_canvas.height);
+
+        game_cntx.strokeStyle = 'black';
+        game_cntx.strokeRect(0, 0, game_canvas.width, game_canvas.height);
+
+        //representing the snake
+        let snake = [
+            {x: 150, y: 150},
+            {x: 140, y: 150},
+            {x: 130, y: 150},
+            {x: 120, y: 150},
+            {x: 110, y: 150}
+        ];
+
+        //creating and drawing the snake
+
+        function drawSnakePart(snakePart){
+            game_cntx.fillStyle = 'lightgreen';
+            game_cntx.strokeStyle = 'darkgreen';
+
+            game_cntx.fillRect(snakePart.x, snakePart.y, 10, 10);
+
+            game_cntx.strokeRect(snakePart.x, snakePart.y, 10, 10);
+        }
+
+        function drawSnake(){
+            snake.forEach(drawSnakePart);
+        }
+
+        drawSnake();
+
+        
+    </script>
+</html>
