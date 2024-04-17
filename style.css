@@ -3,6 +3,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border: 1px solid black;
 }
 
 #score {
@@ -15,4 +16,47 @@
     text-align: center;
     font-size: 40px;
     font-family: 'Antic Slab', serif;
+}
+
+#startButton{
+
+    top:50%;
+    background-color:#871818;
+    color: #fff;
+    border:none;
+    border-radius:10px;
+}
+#startButton:focus {
+    outline-color: transparent;
+    outline-style:solid;
+    box-shadow: 0 0 0 4px #5a01a7;
+}
+
+#pauseButton{
+
+    top:50%;
+    background-color:#0a0a23;
+    color: #fff;
+    border:none;
+    border-radius:10px;
+}
+
+#pauseButton:focus {
+    outline-color: transparent;
+    outline-style:solid;
+    box-shadow: 0 0 0 4px #5a01a7;
+}
+
+#resetButton{   
+    top:50%;
+    background-color:#0a0a23;
+    color: #fff;
+    border:none;
+    border-radius:10px;
+}
+
+#resetButton:focus {
+    outline-color: transparent;
+    outline-style:solid;
+    box-shadow: 0 0 0 4px #5a01a7;
 }

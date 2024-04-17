@@ -1,4 +1,5 @@
 window.onload = function() { // this function will be called when the page is loaded
+    
     let gameState = 'stopped' // stopped, running, paused
 
     let timeoutId = null;
@@ -186,14 +187,16 @@ window.onload = function() { // this function will be called when the page is lo
     function highScore(score){
         if(localStorage.getItem('highScore') === null){
             localStorage.setItem('highScore', score);
+        } else if (score > localStorage.getItem('highScore')) {
+            localStorage.setItem('highScore', score);
         }
-
+    
         let highScore = localStorage.getItem('highScore');
-
+    
         if(highScore === null){
             highScore = 0;
         }
-
+    
         document.getElementById('highScore').innerHTML = "High score: " + highScore;
     }
 
@@ -321,8 +324,51 @@ window.onload = function() { // this function will be called when the page is lo
                 // Reset the snake's position and direction
         pauseButton.innerHTML = 'Pause'; // Change the pause button text back to 'Pause'
         createFood();
+        score = 0;
+        gameState = 'running';
         main();
     });
-    createFood();
+    
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'p' || event.key === 'P') {
+            const pauseButton = document.getElementById('pauseButton');
+            if (gameState === 'running') {
+                gameState = 'paused';
+                pauseButton.innerText = 'Resume';
+            } else if (gameState === 'paused') {
+                gameState = 'running';
+                pauseButton.innerText = 'Pause';
+                main();
+            }
+        }
+    });
 
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'r' || event.key === 'R') {
+            clearTimeout(timeoutId);
+            gameState = 'stopped';
+            snake =[{x: 150, y: 150},
+                    {x: 140, y: 150},
+                    {x: 130, y: 150},
+                    {x: 120, y: 150},
+                    {x: 110, y: 150}]; 
+                    // Reset the snake's position and direction
+            pauseButton.innerHTML = 'Pause'; // Change the pause button text back to 'Pause'
+            createFood();
+            score = 0;
+            gameState = 'running';
+            main();
+        }
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 's' || event.key === 'S') {
+            if (gameState !== 'running') {
+                gameState = 'running';
+                main();
+            }
+        }
+    });
+
+    createFood();
 }
