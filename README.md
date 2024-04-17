@@ -8,3 +8,6 @@ The goal of the game is to score the highest score while avoiding the snake tail
 The snake grows as it eats the fruit and that is how you score points.
 
 I want to try to get the basics done and then hopefully make this into a more visually apealling experience.
+
+
+//There are buttons that allow you to now, pause, start and reset the game.
